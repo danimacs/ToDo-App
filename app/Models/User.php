@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function families()
+    {
+        return $this->hasMany(Family::class)->orderBy('updated_at');
+    }
 }
