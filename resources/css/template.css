@@ -14,6 +14,7 @@
 .chat-panel-scroll {
     overflow: scroll;
     overflow-x: auto;
+    overflow-y: auto;
 }
 
 .chat.chat-panel .left-chat-message {

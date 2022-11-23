@@ -25,21 +25,21 @@
                     Today
                 </div>
 
-                @foreach($family->tasks->where('active', true) as $task)
-                    <div class="left-chat-message fs-13 mb-2">
+                @foreach($family->tasks->where('finished', true) as $task)
+                    <div wire:click="$emit('changeState', {{ $task }})" class="left-chat-message fs-13 mb-2">
                         <p class="mb-3 mr-3 pr-4">{{ $task->description }}</p>
                         <div class="message-options">
-                            <p class="message-time">{{ $task->created_at }}</p>
+                            <p class="message-time">{{ $task->updated_at }}</p>
                         </div>
                     </div>
                 @endforeach
 
-                @foreach($family->tasks->where('active', false) as $task)
-                    <div class="d-flex flex-row-reverse mb-2">
+                @foreach($family->tasks->where('finished', false) as $task)
+                    <div wire:click="$emit('changeState', {{ $task }})" class="d-flex flex-row-reverse mb-2">
                         <div class="right-chat-message fs-13 mb-2">
                             <p class="mb-3 mr-3 pr-4">{{ $task->description }}</p>
                             <div class="message-options dark">
-                                <p class="message-time">{{ $task->created_at }}</p>
+                                <p class="message-time">{{ $task->updated_at }}</p>
                             </div>
                         </div>
                     </div>

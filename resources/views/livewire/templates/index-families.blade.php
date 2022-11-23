@@ -2,7 +2,7 @@
     <div class="pb-3 d-flex flex-column navigation-mobile pagination-scrool chat-user-scroll">
 
         @foreach(Auth::user()->families as $family)
-            <div wire:click="$emit('changeFamily', {{$family}})" class="chat-item active d-flex pl-3 pr-0 pt-3 pb-3">
+            <div wire:click="$emit('changeFamily', {{ $family }})" class="chat-item active d-flex pl-3 pr-0 pt-3 pb-3">
                 <div class="w-100">
                     <div class="d-flex pl-0">
                         <img class="rounded-circle shadow avatar-sm mr-3"
