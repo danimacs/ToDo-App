@@ -4,7 +4,25 @@
 
 /* CUSTOM */
 .main-wrapper {
-    height: 1200px;
+    height: 100vh
+}
+
+.card-stacked {
+    height: 75vh;
+}
+
+.chat-panel-scroll {
+    overflow: scroll;
+    overflow-x: auto;
+}
+
+.chat.chat-panel .left-chat-message {
+    text-decoration: line-through;
+}
+
+.chat.chat-panel .right-chat-message, .chat.chat-panel .left-chat-message {
+    cursor: pointer;
+    min-width: 150px;
 }
 
 .chat-input-tasks {
@@ -463,7 +481,6 @@ img.shadow {
 
 .chat.chat-panel .left-chat-message, .chat.chat-panel .right-chat-message {
     padding: 0.5rem 1rem;
-    max-width: 47%;
 }
 
 .left-chat-message {
@@ -485,17 +502,6 @@ img.shadow {
     padding: 2px 6px;
     font-size: 11px;
     color: #6c757d;
-    cursor: pointer;
-}
-
-.chat.chat-panel .message-arrow, .chat.chat-panel .message-time {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    padding: 2px 6px;
-    font-size: 11px;
-    color: #6c757d;
-    cursor: pointer;
 }
 
 .chat.chat-panel .message-arrow {
@@ -512,12 +518,10 @@ img.shadow {
 
 .chat.chat-panel .left-chat-message, .chat.chat-panel .right-chat-message {
     padding: 0.5rem 1rem;
-    max-width: 47%;
 }
 
 .chat.chat-panel .left-chat-message, .chat.chat-panel .right-chat-message {
     padding: 0.5rem 1rem;
-    max-width: 47%;
 }
 
 .right-chat-message {
@@ -609,17 +613,6 @@ img.shadow {
     transform: scale(0);
 }
 
-.chat.chat-panel .left-chat-message:hover .message-time, .chat.chat-panel .right-chat-message:hover .message-time {
-    -webkit-transition: all .25s ease 0s;
-    transition: all .25s ease 0s;
-    transform: scale(0);
-}
-
-.chat.chat-panel .left-chat-message:hover .message-arrow, .chat.chat-panel .right-chat-message:hover .message-arrow {
-    -webkit-transition: all .25s ease 0s;
-    transition: all .25s ease 0s;
-    transform: scale(1);
-}
 
 .chat .chat-user-detail {
     position: absolute;

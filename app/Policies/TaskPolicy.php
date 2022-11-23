@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Family;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FamilyPolicy
+class TaskPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class FamilyPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Family $family)
+    public function view(User $user, Task $task)
     {
-        return $user->id === $family->id;
+        return $user->id === $task->id;
     }
 
     /**
@@ -48,47 +48,47 @@ class FamilyPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Family $family)
+    public function update(User $user, Task $task)
     {
-        return $user->id === $family->id;
+        return $user->id === $task->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Family $family)
+    public function delete(User $user, Task $task)
     {
-        return $user->id === $family->id;
+        return $user->id === $task->id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Family $family)
+    public function restore(User $user, Task $task)
     {
-        return $user->id === $family->id;
+        return $user->id === $task->id;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Family $family)
+    public function forceDelete(User $user, Task $task)
     {
-        return $user->id === $family->id;
+        return $user->id === $task->id;
     }
 }

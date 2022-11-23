@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Family;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(5)
-            ->hasFamilies(5)
+            ->has(
+                Family::factory(5)->hasTasks(6))
             ->create();
     }
 }

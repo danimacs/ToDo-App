@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Family;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
 
 Route::resources([
     'family' => FamilyController::class,
+    'task' => TaskController::class,
 ]);
 
 Route::middleware('auth')->group(function () {

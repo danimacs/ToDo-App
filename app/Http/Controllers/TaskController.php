@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFamilyRequest;
-use App\Http\Requests\UpdateFamilyRequest;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Family;
+use App\Models\Task;
 use Illuminate\Support\Facades\Redirect;
-use function Illuminate\Support\Facades\Redirect;
 
-class FamilyController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,14 +33,14 @@ class FamilyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFamilyRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  \App\Http\Requests\StoreTaskRequest  $request
+     * @return \Illuminate\Http\Response
      */
-    public function store(StoreFamilyRequest $request)
+    public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
 
-        auth()->user()->families()->create($data);
+        Task::create($data);
 
         return Redirect::back();
     }
@@ -48,10 +48,10 @@ class FamilyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Family $family)
+    public function show(Task $task)
     {
         //
     }
@@ -59,10 +59,10 @@ class FamilyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Family $family)
+    public function edit(Task $task)
     {
         //
     }
@@ -70,11 +70,11 @@ class FamilyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFamilyRequest  $request
-     * @param  \App\Models\Family  $family
+     * @param  \App\Http\Requests\UpdateTaskRequest  $request
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFamilyRequest $request, Family $family)
+    public function update(UpdateTaskRequest $request, Task $task)
     {
         //
     }
@@ -82,10 +82,10 @@ class FamilyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Family  $family
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Family $family)
+    public function destroy(Task $task)
     {
         //
     }

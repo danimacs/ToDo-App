@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function families()
     {
-        return $this->hasMany(Family::class)->orderBy('updated_at');
+        return $this->hasMany(Family::class)->orderBy('updated_at', 'desc')->with('tasks');
     }
 }
