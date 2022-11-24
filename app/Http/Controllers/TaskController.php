@@ -76,7 +76,11 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+
+        $task->update($data);
+
+        return Redirect::back();
     }
 
     /**

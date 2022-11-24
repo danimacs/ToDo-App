@@ -13,7 +13,7 @@ class UpdateTaskRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->families()->find($this->task->family_id) != null;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'description' => 'required',
         ];
     }
 }

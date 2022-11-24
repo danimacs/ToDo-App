@@ -22,7 +22,6 @@
 }
 
 .chat.chat-panel .right-chat-message, .chat.chat-panel .left-chat-message {
-    cursor: pointer;
     min-width: 150px;
 }
 
@@ -34,8 +33,16 @@
     border-bottom: 1px solid rgb(225, 225, 227);
 }
 
-/* DEFAULT */
+.chat-message input {
+    all: unset;
+}
 
+.chat-message .bi-check-circle, .chat-message .bi-check-circle-fill {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* DEFAULT */
 body {
     font-size: 14px;
     font-weight: 300;

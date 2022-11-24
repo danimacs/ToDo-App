@@ -6,14 +6,8 @@
                     <img class="rounded-circle shadow avatar-sm mr-3 chat-profile-picture"
                          src="https://user-images.githubusercontent.com/35243461/168796877-f6c8819a-5d6e-4b2a-bd56-04963639239b.jpg">
 
-                    <div class="mr-3">
-                        <a href="!#">
-                            <p class="fw-400 mb-0 text-dark-75">Beate Lemoine</p>
-                        </a>
-
-                        <p class="sub-caption text-muted text-small mb-0">
-                            <i class="la la-clock mr-1"></i> last seen today at 09:15 PM
-                        </p>
+                    <div class="d-flex align-items-center mr-3">
+                        <p class="fw-400 mb-0 text-dark-75">{{ $family->name }}</p>
                     </div>
                 </div>
             </div>
@@ -26,18 +20,31 @@
                 </div>
 
                 @foreach($family->tasks->where('finished', true) as $task)
-                    <div wire:click="$emit('changeState', {{ $task }})" class="left-chat-message fs-13 mb-2">
-                        <p class="mb-3 mr-3 pr-4">{{ $task->description }}</p>
-                        <div class="message-options">
-                            <p class="message-time">{{ $task->updated_at }}</p>
+                    <div class="chat-message d-flex align-items-center">
+                        <i wire:click="$emit('changeState', {{ $task }})" class="bi bi-check-circle"></i>
+
+                        <div class="left-chat-message fs-13 mb-2">
+                            <p class="mb-3 mr-3 pr-4">{{ $task->description }}</p>
+
+                            <div class="message-options">
+                                <p class="message-time">{{ $task->updated_at }}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach
 
                 @foreach($family->tasks->where('finished', false) as $task)
-                    <div wire:click="$emit('changeState', {{ $task }})" class="d-flex flex-row-reverse mb-2">
+                    <div class="chat-message d-flex flex-row-reverse align-items-center">
+                        <i wire:click="$emit('changeState', {{ $task }})" class="bi bi-check-circle-fill"></i>
+
                         <div class="right-chat-message fs-13 mb-2">
-                            <p class="mb-3 mr-3 pr-4">{{ $task->description }}</p>
+                            <form action="{{ route('task.update', $task->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input value="{{ $task->description }}" type="text" name="description" class="mb-3 mr-3 pr-4">
+                            </form>
+
+
                             <div class="message-options dark">
                                 <p class="message-time">{{ $task->updated_at }}</p>
                             </div>
