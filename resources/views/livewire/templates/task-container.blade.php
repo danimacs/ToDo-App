@@ -24,7 +24,11 @@
                         <i wire:click="$emit('changeState', {{ $task }})" class="bi bi-check-circle"></i>
 
                         <div class="left-chat-message fs-13 mb-2">
-                            <p class="mb-3 mr-3 pr-4">{{ $task->description }}</p>
+                            <form action="{{ route('task.update', $task->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input value="{{ $task->description }}" type="text" name="description" class="mb-3 mr-3 pr-4">
+                            </form>
 
                             <div class="message-options">
                                 <p class="message-time">{{ $task->updated_at }}</p>
