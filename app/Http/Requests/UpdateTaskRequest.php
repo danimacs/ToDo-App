@@ -25,6 +25,7 @@ class UpdateTaskRequest extends FormRequest
     {
         return [
             'description' => 'required',
+            'expiration_date' => 'required'
         ];
     }
 }

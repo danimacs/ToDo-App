@@ -18,7 +18,8 @@ class TaskFactory extends Factory
     {
         return [
             'description' => fake()->colorName(),
-            'finished' => fake()->boolean()
+            'finished' => fake()->boolean(),
+            'expiration_date' => fake()->date()
         ];
     }
 }

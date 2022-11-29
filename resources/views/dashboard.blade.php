@@ -4,7 +4,7 @@
             <div class="row">
                 @livewire('templates.sidebar-container')
 
-                @livewire('templates.task-container')
+                @livewire('templates.chat-container')
             </div>
         </div>
     </div>

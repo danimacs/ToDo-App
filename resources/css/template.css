@@ -42,6 +42,14 @@
     cursor: pointer;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.chat-message .chat-message-submit {
+    display: none;
+}
+
 /* DEFAULT */
 body {
     font-size: 14px;
@@ -545,7 +553,7 @@ img.shadow {
     box-shadow: 0 4px 8px 0 rgb(34 41 47 / 12%);
 }
 
-.chat.chat-panel .message-options.dark .message-arrow i, .chat.chat-panel .message-options.dark .message-time {
+.chat.chat-panel .right-chat-message .message-options .message-arrow i, .chat.chat-panel .right-chat-message  .message-options .message-time {
     color: #fff !important;
 }
 
