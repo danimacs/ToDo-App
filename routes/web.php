@@ -37,3 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+Route::get('auth/google', [\App\Http\Controllers\GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back',[\App\Http\Controllers\GoogleAuthController::class, 'callbackGoogle']);
+
+Route::get('auth/github', [\App\Http\Controllers\GithubAuthController::class, 'redirect'])->name('github-auth');
+Route::get('auth/github/call-back',[\App\Http\Controllers\GithubAuthController::class, 'callbackGitHub']);
