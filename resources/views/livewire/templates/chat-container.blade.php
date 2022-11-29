@@ -20,11 +20,11 @@
                 </div>
 
                 @foreach($family->tasks->where('finished', true) as $task)
-                    @livewire('templates.task-container', ['task' => $task, 'class' => 'left-chat-message'])
+                    @livewire('templates.task-container', ['task' => $task, 'class' => 'left-chat-message'], key($task->id))
                 @endforeach
 
                 @foreach($family->tasks->where('finished', false) as $task)
-                    @livewire('templates.task-container', ['task' => $task, 'class' => 'right-chat-message', 'flexRowReverse' => 'true'])
+                    @livewire('templates.task-container', ['task' => $task, 'class' => 'right-chat-message', 'flexRowReverse' => 'true'], , key($task->id))
                 @endforeach
             </div>
         </div>

@@ -46,6 +46,13 @@
             </div>
         </div>
 
-        @livewire('templates.index-families')
+        <div class="chat-user-panel">
+            <div class="pb-3 d-flex flex-column navigation-mobile pagination-scrool chat-user-scroll">
+
+                @foreach(Auth::user()->families as $family)
+                    @livewire('templates.family-container', ['family' => $family], key($family->id))
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
