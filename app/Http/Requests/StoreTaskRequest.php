@@ -26,6 +26,7 @@ class StoreTaskRequest extends FormRequest
         return [
             'description' => 'required',
             'finished' => 'required',
+            'expiration_date' => 'required',
             'family_id' => 'required',
         ];
     }
