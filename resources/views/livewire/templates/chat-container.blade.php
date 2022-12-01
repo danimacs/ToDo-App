@@ -24,7 +24,7 @@
                 @endforeach
 
                 @foreach($family->tasks->where('finished', false) as $task)
-                    @livewire('templates.task-container', ['task' => $task, 'class' => 'right-chat-message', 'flexRowReverse' => 'true'], , key($task->id . 'finished=false'))
+                    @livewire('templates.task-container', ['task' => $task, 'class' => 'right-chat-message', 'flexRowReverse' => 'true'], key($task->id . 'finished=false'))
                 @endforeach
             </div>
         </div>
