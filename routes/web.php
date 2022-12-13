@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\GithubAuthController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -37,10 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
-
-Route::get('auth/google', [\App\Http\Controllers\GoogleAuthController::class, 'redirect'])->name('google-auth');
-Route::get('auth/google/call-back',[\App\Http\Controllers\GoogleAuthController::class, 'callbackGoogle']);
-
-Route::get('auth/github', [\App\Http\Controllers\GithubAuthController::class, 'redirect'])->name('github-auth');
-Route::get('auth/github/call-back',[\App\Http\Controllers\GithubAuthController::class, 'callbackGitHub']);
+Route::get('auth/github', [GithubAuthController::class, 'redirect'])->name('github-auth');
+Route::get('auth/github/call-back', [GithubAuthController::class, 'callbackGitHub']);

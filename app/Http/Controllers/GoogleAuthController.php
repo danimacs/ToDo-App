@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Throwable;
 
 class GoogleAuthController extends Controller
 {
@@ -16,34 +17,24 @@ class GoogleAuthController extends Controller
     public function callbackGoogle()
     {
         try {
-            $google_user = Socialite::driver('google')->user();
+            $googleUser = Socialite::driver('google')->user();
+            $user = User::where('email', $googleUser->getEmail())->first();
 
-            $user = \App\Models\User::where('email', $google_user->getEmail())->first();
-
-
-            if (!$user){
-
-                $new_user = \App\Models\User::create([
-                    'name' => $google_user->getName(),
-                    'email' => $google_user->getEmail(),
-                    'google_id' => $google_user->getId()
-
-
+            if (!$user) {
+                $user = User::create([
+                    'name' => $googleUser->getName(),
+                    'email' => $googleUser->getEmail(),
+                    'google_id' => $googleUser->getId()
                 ]);
 
-                Auth::login($new_user);
-
-                return  redirect('/dashboard');
-            }else{
                 Auth::login($user);
-                return  redirect('/dashboard');
-
+            } else {
+                Auth::login($user);
             }
 
-        }catch (\Throwable $th){
-            dd("error ".$th->getMessage());
-
+            return redirect('/dashboard');
+        } catch (Throwable $th) {
+            dd("error " . $th->getMessage());
         }
-
     }
 }

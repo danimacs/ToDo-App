@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Throwable;
 
 class GithubAuthController extends Controller
 {
@@ -16,34 +17,24 @@ class GithubAuthController extends Controller
     public function callbackGitHub()
     {
         try {
-            $github_user = Socialite::driver('github')->user();
+            $githubUser = Socialite::driver('github')->user();
+            $user = User::where('email', $githubUser->getEmail())->first();
 
-            $user = \App\Models\User::where('email', $github_user->getEmail())->first();
-
-
-            if (!$user){
-
-                $new_user = \App\Models\User::create([
-                    'name' => $github_user->getName(),
-                    'email' => $github_user->getEmail(),
-                    'device_code' => $github_user->getId()
-
-
+            if (!$user) {
+                $user = User::create([
+                    'name' => $githubUser->getName(),
+                    'email' => $githubUser->getEmail(),
+                    'device_code' => $githubUser->getId()
                 ]);
 
-                Auth::login($new_user);
-
-                return  redirect('/dashboard');
-            }else{
                 Auth::login($user);
-                return  redirect('/dashboard');
-
+            } else {
+                Auth::login($user);
             }
 
-        }catch (\Throwable $th){
-            dd("error ".$th->getMessage());
-
+            return redirect('/dashboard');
+        } catch (Throwable $th) {
+            dd("error " . $th->getMessage());
         }
-
     }
 }
