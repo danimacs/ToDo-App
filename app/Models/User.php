@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\TasksExpirationDate;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,5 +47,25 @@ class User extends Authenticatable
     public function families()
     {
         return $this->hasMany(Family::class)->orderBy('updated_at', 'desc')->with('tasks');
+    }
+
+    public function tasksByExpirationDate(TasksExpirationDate $tasksExpirationDate)
+    {
+        $operator = null;
+        switch ($tasksExpirationDate) {
+            case TasksExpirationDate::PAST:
+                $operator = "<";
+                break;
+            case TasksExpirationDate::TODAY:
+                $operator = "=";
+                break;
+            case TasksExpirationDate::FUTURE:
+                $operator = ">";
+                break;
+            default:
+                break;
+        }
+
+        return $this->hasManyThrough(Task::class, Family::class)->whereDate('expiration_date', $operator, Carbon::now())->get();
     }
 }

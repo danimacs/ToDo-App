@@ -4,24 +4,35 @@ namespace App\Http\Livewire\Templates;
 
 use App\Models\Family;
 use App\Models\Task;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ChatContainer extends Component
 {
-
-    public $family;
+    public string $name;
+    public Collection $tasks;
+    public Family|null $family;
 
     protected $listeners = ['changeFamily', 'changeState'];
 
     public function mount()
     {
-        $this->family = Auth::user()->families()->first();
+        $family = Auth::user()->families()->first();
+        $this->changeFamily(null, null, $family);
     }
 
-    public function changeFamily(Family $family)
+    public function changeFamily(string $name = null, array $tasks = null, Family $family = null)
     {
-        $this->family = $family;
+        if ($family->id == null) {
+            $this->name = $name;
+            $this->tasks = Task::hydrate($tasks);
+            $this->family = null;
+        } else {
+            $this->name = $family->name;
+            $this->tasks = $family->tasks;
+            $this->family = $family;
+        }
     }
 
     public function changeState(Task $task)

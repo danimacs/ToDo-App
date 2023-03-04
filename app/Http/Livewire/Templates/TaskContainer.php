@@ -2,16 +2,16 @@
 
 namespace App\Http\Livewire\Templates;
 
+use App\Models\Task;
 use Livewire\Component;
 
 class TaskContainer extends Component
 {
+    public Task $task;
+    public string $class;
+    public bool $flexRowReverse;
 
-    public $task;
-    public $class;
-    public $flexRowReverse;
-
-    public function mount($task, $class, $flexRowReverse = false) {
+    public function mount(Task $task, string $class, $flexRowReverse = false) {
         $this->task = $task;
         $this->class = $class;
         $this->flexRowReverse = $flexRowReverse;
