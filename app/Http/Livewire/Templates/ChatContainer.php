@@ -37,8 +37,13 @@ class ChatContainer extends Component
 
     public function changeState(Task $task)
     {
-        $task->update(['finished' => !$task->finished]);
-        $this->family = $this->family->fresh();
+        foreach ($this->tasks as $item) {
+            if ($task->id == $item->id) {
+                $item->finished = !$task->finished;
+                $item->save();
+                break;
+            }
+        }
     }
 
     public function render()
