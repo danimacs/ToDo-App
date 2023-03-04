@@ -13,6 +13,8 @@ class Family extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Task::class)->orderBy('updated_at');
+        return $this->hasMany(Task::class)
+            ->orderBy('expiration_date', 'asc')
+            ->orderBy('updated_at', 'asc');
     }
 }

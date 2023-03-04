@@ -16,10 +16,6 @@
 
             <div class="d-flex flex-row mb-3 navigation-mobile scrollable-chat-panel chat-panel-scroll">
                 <div class="w-100 p-3">
-                    <div class="text-center letter-space drop-shadow text-uppercase fs-12 w-100 mb-3">
-                        Today
-                    </div>
-
                     @foreach($tasks->where('finished', true) as $task)
                         @livewire('templates.task-container', ['task' => $task, 'class' => 'left-chat-message'], key($task->id . 'finished=true'))
                     @endforeach

@@ -46,7 +46,9 @@ class User extends Authenticatable
 
     public function families()
     {
-        return $this->hasMany(Family::class)->orderBy('updated_at', 'desc')->with('tasks');
+        return $this->hasMany(Family::class)
+            ->orderBy('updated_at', 'desc')
+            ->with('tasks');
     }
 
     public function tasksByExpirationDate(TasksExpirationDate $tasksExpirationDate)
@@ -66,6 +68,10 @@ class User extends Authenticatable
                 break;
         }
 
-        return $this->hasManyThrough(Task::class, Family::class)->whereDate('expiration_date', $operator, Carbon::now())->get();
+        return $this->hasManyThrough(Task::class, Family::class)
+            ->whereDate('expiration_date', $operator, Carbon::now())
+            ->orderBy('expiration_date', 'asc')
+            ->orderBy('updated_at', 'asc')
+            ->get();
     }
 }
