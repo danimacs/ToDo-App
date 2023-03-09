@@ -44,6 +44,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function create(array $attributes = [])
+    {
+        $user = static::query()->create($attributes);
+
+        // Crear familia por defecto
+        Family::create(['user_id' => $user->id, 'name' => 'First Family!']);
+
+        return $user;
+    }
+
     public function families()
     {
         return $this->hasMany(Family::class)
