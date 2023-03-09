@@ -8,13 +8,10 @@ use Livewire\Component;
 class TaskContainer extends Component
 {
     public Task $task;
-    public string $class;
-    public bool $flexRowReverse;
 
-    public function mount(Task $task, string $class, $flexRowReverse = false) {
+    public function mount(Task $task, $finished = false) {
         $this->task = $task;
-        $this->class = $class;
-        $this->flexRowReverse = $flexRowReverse;
+        $this->finished = $finished;
     }
 
     public function render()

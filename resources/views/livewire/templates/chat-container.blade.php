@@ -17,11 +17,11 @@
             <div class="d-flex flex-row mb-3 navigation-mobile scrollable-chat-panel chat-panel-scroll">
                 <div class="w-100 p-3">
                     @foreach($tasks->where('finished', true) as $task)
-                        @livewire('templates.task-container', ['task' => $task, 'class' => 'left-chat-message'], key($task->id . 'finished=true'))
+                        @livewire('templates.task-container', ['task' => $task, 'finished' => true], key($task->id . 'finished=true'))
                     @endforeach
 
                     @foreach($tasks->where('finished', false) as $task)
-                        @livewire('templates.task-container', ['task' => $task, 'class' => 'right-chat-message', 'flexRowReverse' => 'true'], key($task->id . 'finished=false'))
+                        @livewire('templates.task-container', ['task' => $task, 'finished' => false], key($task->id . 'finished=false'))
                     @endforeach
                 </div>
             </div>
@@ -30,14 +30,12 @@
                 <div class="chat-input chat-input-tasks pl-3 pr-3">
                     <form action="{{ route('task.store') }}" method="POST">
                         @csrf
+
                         <div class="input-group">
-                            <input type="hidden" name="family_id" value="{{ $family->id }}">
-
                             <input class="form-control" placeholder="Tarea" type="text" name="description">
-
-                            <input type="hidden" name="finished" value="0">
-                            <input type="hidden" name="expiration_date" value="{{ now() }}">
                         </div>
+
+                        <input type="hidden" name="family_id" value="{{ $family->id }}">
                     </form>
                 </div>
             @endisset

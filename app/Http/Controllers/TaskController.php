@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Family;
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 
 class TaskController extends Controller
@@ -39,6 +40,9 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
+
+        $data['finished'] = 0;
+        $data['expiration_date'] =  Carbon::now();
 
         Task::create($data);
 

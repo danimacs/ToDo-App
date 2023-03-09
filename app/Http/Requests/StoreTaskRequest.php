@@ -24,10 +24,8 @@ class StoreTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required',
-            'finished' => 'required',
-            'expiration_date' => 'required',
             'family_id' => 'required',
+            'description' => 'required',
         ];
     }
 }
