@@ -37,8 +37,8 @@
     all: unset;
 }
 
-.chat-message .bi-check-circle, .chat-message .bi-check-circle-fill {
-    font-size: 20px;
+.chat-message .bi-check-circle, .chat-message .bi-check-circle-fill, .chat-message .bi-trash {
+    font-size: 17px;
     cursor: pointer;
 }
 
@@ -427,6 +427,9 @@ img.shadow {
 
 .badge-light-danger {
     background-color: rgba(187, 10, 10, 0.1);
+}
+
+.bi-trash {
     color: #bb0a0a;
 }
 
@@ -558,7 +561,7 @@ img.shadow {
     box-shadow: 0 4px 8px 0 rgb(34 41 47 / 12%);
 }
 
-.chat.chat-panel .right-chat-message .message-options .message-arrow i, .chat.chat-panel .right-chat-message  .message-options .message-time {
+.chat.chat-panel .right-chat-message .message-options .message-arrow i, .chat.chat-panel .right-chat-message .message-options .message-time {
     color: #fff !important;
 }
 
