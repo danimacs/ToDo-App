@@ -30,7 +30,7 @@ class FamilyPolicy
      */
     public function view(User $user, Family $family)
     {
-        return $user->id === $family->id;
+        return $user->families()->find($family->id) != null;
     }
 
     /**
@@ -53,7 +53,7 @@ class FamilyPolicy
      */
     public function update(User $user, Family $family)
     {
-        return $user->id === $family->id;
+        //
     }
 
     /**
@@ -65,7 +65,7 @@ class FamilyPolicy
      */
     public function delete(User $user, Family $family)
     {
-        return $user->id === $family->id;
+        return $user->families()->find($family->id) != null;
     }
 
     /**
@@ -77,7 +77,7 @@ class FamilyPolicy
      */
     public function restore(User $user, Family $family)
     {
-        return $user->id === $family->id;
+        //
     }
 
     /**
@@ -89,6 +89,6 @@ class FamilyPolicy
      */
     public function forceDelete(User $user, Family $family)
     {
-        return $user->id === $family->id;
+        //
     }
 }

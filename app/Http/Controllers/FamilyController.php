@@ -87,6 +87,8 @@ class FamilyController extends Controller
      */
     public function destroy(Family $family)
     {
-        //
+        $family->delete();
+
+        return Redirect::back();
     }
 }

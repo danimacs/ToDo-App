@@ -425,6 +425,11 @@ img.shadow {
     color: #0abb87;
 }
 
+.badge-light-danger {
+    background-color: rgba(187, 10, 10, 0.1);
+    color: #bb0a0a;
+}
+
 .badge {
     font-weight: 500;
     display: inline-block;

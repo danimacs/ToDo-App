@@ -28,6 +28,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/family/delete/{family}', [FamilyController::class, 'destroy'])->name('family.delete');
+
 Route::resources([
     'family' => FamilyController::class,
     'task' => TaskController::class,
