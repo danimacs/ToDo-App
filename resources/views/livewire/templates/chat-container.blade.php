@@ -3,8 +3,7 @@
         <div class="p-3 chat-header">
             <div class="d-flex">
                 <div class="w-100 d-flex pl-0">
-                    <img class="rounded-circle shadow avatar-sm mr-3 chat-profile-picture"
-                         src="https://user-images.githubusercontent.com/35243461/168796877-f6c8819a-5d6e-4b2a-bd56-04963639239b.jpg">
+                    <img class="rounded-circle avatar-sm mr-3 chat-profile-picture" src="https://ui-avatars.com/api/?name={{ $name }}">
 
                     <div class="d-flex align-items-center mr-3">
                         <p class="fw-400 mb-0 text-dark-75">{{ $name }}</p>
